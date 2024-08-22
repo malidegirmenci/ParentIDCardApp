@@ -8,11 +8,11 @@ ws_id_cards = wb.create_sheet(title="Kimlik Kartları")
 
 ws_id_cards.row_dimensions[1].height = 10
 ws_id_cards.column_dimensions['A'].width = 2
-ws_id_cards.column_dimensions['B'].width = 14
+ws_id_cards.column_dimensions['B'].width = 16
 ws_id_cards.column_dimensions['C'].width = 14
 ws_id_cards.column_dimensions['D'].width = 14
 ws_id_cards.column_dimensions['E'].width = 2
-ws_id_cards.column_dimensions['F'].width = 14
+ws_id_cards.column_dimensions['F'].width = 16
 ws_id_cards.column_dimensions['G'].width = 14
 ws_id_cards.column_dimensions['H'].width = 14
 
@@ -20,7 +20,7 @@ start_row = 2
 start_col = 1
 
 for index, row in enumerate(ws_data.iter_rows(min_row=2, values_only=True)):
-    tc_id_no, name, surname, classStudent = row
+    parentName, studentName, levelOfStudent, classOfStudent = row
 
     col_offset = (index % 2) * 4  # Eğer index çiftse sola yerleşir, tekse sağa yerleşir.
     current_col = start_col + col_offset
@@ -35,15 +35,14 @@ for index, row in enumerate(ws_data.iter_rows(min_row=2, values_only=True)):
         print(f"{image_path_top} could not be found.")
 
     ws_id_cards.merge_cells(f'{chr(65 + current_col)}{start_row + 1}:{chr(65 + current_col + 2)}{start_row + 4}')
-    ws_id_cards[f'{chr(65 + current_col)}{start_row + 6}'] = 'T.C Kimlik No    :'
-    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 6}'] = str(tc_id_no)
-    ws_id_cards[f'{chr(65 + current_col)}{start_row + 7}'] = 'Adı                   :'
-    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 7}'] = str(name)
-    ws_id_cards[f'{chr(65 + current_col)}{start_row + 8}'] = 'Soyadı              :'
-    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 8}'] = str(surname)
-    ws_id_cards[f'{chr(65 + current_col)}{start_row + 9}'] = 'Sınıfı                :'
-    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 9}'] = str(classStudent)
-    ws_id_cards.merge_cells(f'{chr(65 + current_col + 2)}{start_row + 6}:{chr(65 + current_col + 2)}{start_row + 10}')
+    ws_id_cards[f'{chr(65 + current_col)}{start_row + 6}'] = 'Veli Ad Soyad       :'
+    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 6}'] = str(parentName)
+    ws_id_cards[f'{chr(65 + current_col)}{start_row + 7}'] = 'Öğrenci Ad Soyadı:'
+    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 7}'] = str(studentName)
+    ws_id_cards[f'{chr(65 + current_col)}{start_row + 8}'] = 'Kademe               :'
+    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 8}'] = str(levelOfStudent)
+    ws_id_cards[f'{chr(65 + current_col)}{start_row + 9}'] = 'Sınıf                     :'
+    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 9}'] = str(classOfStudent)
 
     try:
         image_path_bottom = 'img/BKKimlikAlt.png'
