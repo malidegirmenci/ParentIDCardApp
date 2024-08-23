@@ -38,14 +38,14 @@ for index, row in enumerate(ws_data.iter_rows(min_row=2, values_only=True)):
         print(f"{image_path_top} could not be found.")
 
     ws_id_cards.merge_cells(f'{chr(65 + current_col)}{start_row + 1}:{chr(65 + current_col + 2)}{start_row + 4}')
-    ws_id_cards[f'{chr(65 + current_col)}{start_row + 6}'] = 'Veli Ad Soyad       :'
-    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 6}'] = str(parentName)
-    ws_id_cards[f'{chr(65 + current_col)}{start_row + 7}'] = 'Öğrenci Ad Soyadı:'
-    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 7}'] = str(studentName)
-    ws_id_cards[f'{chr(65 + current_col)}{start_row + 8}'] = 'Kademe               :'
-    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 8}'] = str(levelOfStudent)
-    ws_id_cards[f'{chr(65 + current_col)}{start_row + 9}'] = 'Sınıf                     :'
-    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 9}'] = str(classOfStudent)
+    ws_id_cards[f'{chr(65 + current_col)}{start_row + 6}'] = f'Veli Ad Soyad'
+    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 6}'] = f': {parentName}'
+    ws_id_cards[f'{chr(65 + current_col)}{start_row + 7}'] = f'Öğrenci Ad Soyadı'
+    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 7}'] = f': {studentName}'
+    ws_id_cards[f'{chr(65 + current_col)}{start_row + 8}'] = 'Kademe'
+    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 8}'] = f': {levelOfStudent}'
+    ws_id_cards[f'{chr(65 + current_col)}{start_row + 9}'] = 'Sınıf'
+    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 9}'] = f': {classOfStudent}'
 
     try:
         image_path_bottom = 'img/BKKimlikAlt.png'
