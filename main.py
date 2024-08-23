@@ -1,10 +1,13 @@
 import openpyxl
 from openpyxl.drawing.image import Image
+from openpyxl.worksheet.page import PageMargins
 
 dataFile = 'ParentInfoList.xlsx'
 wb = openpyxl.load_workbook(dataFile)
 ws_data = wb.active
 ws_id_cards = wb.create_sheet(title="Kimlik Kartları")
+
+ws_id_cards.page_margins = PageMargins(left=0.5, right=0.5, top=0.5, bottom=0.5)
 
 ws_id_cards.row_dimensions[1].height = 10
 ws_id_cards.column_dimensions['A'].width = 2
