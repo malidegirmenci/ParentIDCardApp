@@ -22,6 +22,18 @@ ws_id_cards.column_dimensions['H'].width = 14
 start_row = 2
 start_col = 1
 
+#checks text and return reformatted
+def formats_text(text):
+  if len(text) <= 25:
+    return text
+  else:
+    arr_text = text.split(" ")
+    last_index = len(arr_text)-1
+    formatted_last_word = arr_text[last_index][0] + '.'
+    arr_text.pop(last_index)
+    formatted_text = ' '.join(arr_text) + ' ' + formatted_last_word
+    return formatted_text
+
 for index, row in enumerate(ws_data.iter_rows(min_row=2, values_only=True)):
     parentName, studentName, levelOfStudent, classOfStudent = row
 
