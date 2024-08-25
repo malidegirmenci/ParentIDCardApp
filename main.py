@@ -82,7 +82,7 @@ for index, row in enumerate(ws_data.iter_rows(min_row=2, values_only=True)):
     except FileNotFoundError:
         print(f"{image_path_bottom} could not be found.")
 
-    if index % 2 == 1:  # İki kimlik yan yana yerleştirildikten sonra bir alt satıra geçilir.
+    if index % 2 == 1:
         start_row += 12
 
 wb.save('ParentIDCardList.xlsx')
