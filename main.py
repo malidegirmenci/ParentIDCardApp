@@ -38,6 +38,27 @@ def formats_text(text):
     formatted_text = ' '.join(arr_text) + ' ' + formatted_last_word
     return formatted_text
 
+dataFile = 'ParentInfoList.xlsx'
+wb = openpyxl.load_workbook(dataFile)
+ws_data = wb.active
+ws_id_cards = wb.create_sheet(title="Kimlik Kartları")
+
+ws_id_cards.page_setup.orientation = ws_id_cards.ORIENTATION_PORTRAIT
+ws_id_cards.page_setup.paperSize = ws_id_cards.PAPERSIZE_A4
+ws_id_cards.page_margins = PageMargins(left=0.5, right=0.5, top=0.5, bottom=0.5)
+arial_font = Font(name='Arial', size=11)
+
+ws_id_cards.column_dimensions['A'].width = 17
+ws_id_cards.column_dimensions['B'].width = 14
+ws_id_cards.column_dimensions['C'].width = 14
+ws_id_cards.column_dimensions['D'].width = 2
+ws_id_cards.column_dimensions['E'].width = 17
+ws_id_cards.column_dimensions['F'].width = 14
+ws_id_cards.column_dimensions['G'].width = 14
+
+start_row = 1
+start_col = 0
+
 for index, row in enumerate(ws_data.iter_rows(min_row=2, values_only=True)):
 
     parent_name, student_name, level_of_student, class_of_student = row
