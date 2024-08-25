@@ -59,7 +59,7 @@ for index, row in enumerate(ws_data.iter_rows(min_row=2, values_only=True)):
 
     parent_name, student_name, level_of_student, class_of_student = row
 
-    col_offset = (index % 2) * 4  # Eğer index çiftse sola yerleşir, tekse sağa yerleşir.
+    col_offset = (index % 2) * 4
     current_col = start_col + col_offset
 
     try:
@@ -103,4 +103,5 @@ for index, row in enumerate(ws_data.iter_rows(min_row=2, values_only=True)):
         start_row += 12
 
 wb.save('ParentIDCardList.xlsx')
+
 print('Created ID Cards')
