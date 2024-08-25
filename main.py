@@ -2,26 +2,7 @@ import openpyxl
 from openpyxl.drawing.image import Image
 from openpyxl.worksheet.page import PageMargins
 from openpyxl.styles import Font
-
-dataFile = 'ParentInfoList.xlsx'
-wb = openpyxl.load_workbook(dataFile)
-ws_data = wb.active
-ws_id_cards = wb.create_sheet(title="Kimlik Kartları")
-
-ws_id_cards.page_setup.orientation = ws_id_cards.ORIENTATION_PORTRAIT
-ws_id_cards.page_setup.paperSize = ws_id_cards.PAPERSIZE_A4
-ws_id_cards.page_margins = PageMargins(left=0.5, right=0.5, top=0.5, bottom=0.75)
-arial_font = Font(name='Arial', size=11)
-
-ws_id_cards.row_dimensions[1].height = 10
-ws_id_cards.column_dimensions['A'].width = 2
-ws_id_cards.column_dimensions['B'].width = 16
-ws_id_cards.column_dimensions['C'].width = 14
-ws_id_cards.column_dimensions['D'].width = 14
-ws_id_cards.column_dimensions['E'].width = 2
-ws_id_cards.column_dimensions['F'].width = 16
-ws_id_cards.column_dimensions['G'].width = 14
-ws_id_cards.column_dimensions['H'].width = 14
+from openpyxl.worksheet.pagebreak import Break
 
 def formats_text(text):
     if len(text) <= 25:
@@ -101,6 +82,9 @@ for index, row in enumerate(ws_data.iter_rows(min_row=2, values_only=True)):
 
     if index % 2 == 1:
         start_row += 12
+
+    if (index + 1) % 10 == 0 and index != 0:
+        ws_id_cards.row_breaks.append(Break(id=start_row - 2))
 
 wb.save('ParentIDCardList.xlsx')
 
