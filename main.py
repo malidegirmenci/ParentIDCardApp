@@ -28,7 +28,7 @@ ws_id_cards.page_setup.paperSize = ws_id_cards.PAPERSIZE_A4
 ws_id_cards.page_margins = PageMargins(left=0.5, right=0.5, top=0.5, bottom=0.5)
 
 # Set the font settings
-arial_font = Font(name='Arial', size=11)
+arial_font = Font(name='Arial', size=10)
 
 # Set column widths
 ws_id_cards.column_dimensions['A'].width = 19
