@@ -31,13 +31,13 @@ ws_id_cards.page_margins = PageMargins(left=0.5, right=0.5, top=0.5, bottom=0.5)
 arial_font = Font(name='Arial', size=11)
 
 # Set column widths
-ws_id_cards.column_dimensions['A'].width = 17
+ws_id_cards.column_dimensions['A'].width = 19
 ws_id_cards.column_dimensions['B'].width = 14
-ws_id_cards.column_dimensions['C'].width = 14
+#ws_id_cards.column_dimensions['C'].width = 14
 ws_id_cards.column_dimensions['D'].width = 2
-ws_id_cards.column_dimensions['E'].width = 17
+ws_id_cards.column_dimensions['E'].width = 19
 ws_id_cards.column_dimensions['F'].width = 14
-ws_id_cards.column_dimensions['G'].width = 14
+#ws_id_cards.column_dimensions['G'].width = 14
 
 # Initialize starting row and column
 start_row = 1
