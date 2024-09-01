@@ -63,13 +63,13 @@ for index, row in enumerate(ws_data.iter_rows(min_row=2, values_only=True)):
 
     # Merge cells and fill in the information
     ws_id_cards.merge_cells(f'{chr(65 + current_col)}{start_row + 1}:{chr(65 + current_col + 2)}{start_row + 4}')
-    ws_id_cards[f'{chr(65 + current_col)}{start_row + 5}'] = 'Parent Name'
+    ws_id_cards[f'{chr(65 + current_col)}{start_row + 5}'] = 'VELİ AD SOYAD'
     ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 5}'] = f': {formats_text(parent_name)}'
-    ws_id_cards[f'{chr(65 + current_col)}{start_row + 6}'] = 'Student Name'
+    ws_id_cards[f'{chr(65 + current_col)}{start_row + 6}'] = 'ÖĞRENCİ AD SOYAD'
     ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 6}'] = f': {formats_text(student_name)}'
-    ws_id_cards[f'{chr(65 + current_col)}{start_row + 7}'] = 'Level'
+    ws_id_cards[f'{chr(65 + current_col)}{start_row + 7}'] = 'KADEME'
     ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 7}'] = f': {level_of_student}'
-    ws_id_cards[f'{chr(65 + current_col)}{start_row + 8}'] = 'Class'
+    ws_id_cards[f'{chr(65 + current_col)}{start_row + 8}'] = 'SINIF'
     ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 8}'] = f': {class_of_student}'
 
     # Apply the font settings
