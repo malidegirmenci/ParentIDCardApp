@@ -6,14 +6,14 @@ from openpyxl.worksheet.pagebreak import Break
 
 # Function to check the length of the given text and shorten it if it exceeds 25 characters
 def formats_text(text):
-    if len(text) <= 25:
+    if len(text) <= 17:
         return text
     else:
         arr_text = text.split(" ")
-        last_index = len(arr_text) - 1
-        formatted_last_word = arr_text[last_index][0] + '.'
-        arr_text.pop(last_index)
-        formatted_text = ' '.join(arr_text) + ' ' + formatted_last_word
+        print(arr_text)
+        formatted_first_word = f'{arr_text[0][0]}.'
+        arr_text.pop(0)
+        formatted_text = f"{formatted_first_word} {' '.join(arr_text)}"
         return formatted_text
 
 # Load the Excel file and select the active sheet
