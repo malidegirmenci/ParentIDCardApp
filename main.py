@@ -53,7 +53,7 @@ for index, row in enumerate(ws_data.iter_rows(min_row=2, values_only=True)):
 
     # Add the top image
     try:
-        image_path_top = 'img/BKKimlikUst.png'
+        image_path_top = 'img/BKIDCardFrontTop.png'
         img_top = Image(image_path_top)
         img_top.width = 310
         img_top.height = 80
@@ -84,7 +84,7 @@ for index, row in enumerate(ws_data.iter_rows(min_row=2, values_only=True)):
 
     # Add the bottom image
     try:
-        image_path_bottom = 'img/BKKimlikAlt.png'
+        image_path_bottom = 'img/BKIDCardFrontBot.png'
         img_bottom = Image(image_path_bottom)
         img_bottom.width = 310
         img_bottom.height = 10
