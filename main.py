@@ -33,11 +33,9 @@ arial_font = Font(name='Arial', size=10)
 # Set column widths
 ws_id_cards.column_dimensions['A'].width = 19
 ws_id_cards.column_dimensions['B'].width = 14
-#ws_id_cards.column_dimensions['C'].width = 14
 ws_id_cards.column_dimensions['D'].width = 2
 ws_id_cards.column_dimensions['E'].width = 19
 ws_id_cards.column_dimensions['F'].width = 14
-#ws_id_cards.column_dimensions['G'].width = 14
 
 # Initialize starting row and column
 start_row = 1
