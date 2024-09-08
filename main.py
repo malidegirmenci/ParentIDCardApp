@@ -86,7 +86,7 @@ for index, row in enumerate(ws_data.iter_rows(min_row=2, values_only=True)):
         image_path_back = 'img/BKIDCardBackFull.png'
         img_back = Image(image_path_back)
         img_back.width = 310
-        img_back.height = 186
+        img_back.height = 179
         ws_id_cards.add_image(img_back, f'{chr(65 + current_col + 4)}{start_row}')
     except FileNotFoundError:
         print(f"{image_path_back} could not be found.")
