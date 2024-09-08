@@ -4,13 +4,12 @@ from openpyxl.worksheet.page import PageMargins
 from openpyxl.styles import Font
 from openpyxl.worksheet.pagebreak import Break
 
-# Function to check the length of the given text and shorten it if it exceeds 25 characters
+# Function to check the length of the given text and shorten it if it exceeds 17 characters
 def formats_text(text):
     if len(text) <= 17:
         return text
     else:
         arr_text = text.split(" ")
-        print(arr_text)
         formatted_first_word = f'{arr_text[0][0]}.'
         arr_text.pop(0)
         formatted_text = f"{formatted_first_word} {' '.join(arr_text)}"
@@ -35,7 +34,6 @@ ws_id_cards.column_dimensions['A'].width = 19
 ws_id_cards.column_dimensions['B'].width = 14
 ws_id_cards.column_dimensions['D'].width = 2
 ws_id_cards.column_dimensions['E'].width = 19
-ws_id_cards.column_dimensions['F'].width = 14
 
 # Initialize starting row and column
 start_row = 1
@@ -45,11 +43,9 @@ start_col = 0
 for index, row in enumerate(ws_data.iter_rows(min_row=2, values_only=True)):
     parent_name, student_name, level_of_student, class_of_student = row
 
-    # Adjust column offset (for switching between cards)
-    col_offset = (index % 2) * 4
-    current_col = start_col + col_offset
+    current_col = start_col
 
-    # Add the top image
+    # Add the top image for the front of the card
     try:
         image_path_top = 'img/BKIDCardFrontTop.png'
         img_top = Image(image_path_top)
@@ -71,16 +67,11 @@ for index, row in enumerate(ws_data.iter_rows(min_row=2, values_only=True)):
     ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 8}'] = f': {class_of_student}'
 
     # Apply the font settings
-    ws_id_cards[f'{chr(65 + current_col)}{start_row + 5}'].font = arial_font
-    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 5}'].font = arial_font
-    ws_id_cards[f'{chr(65 + current_col)}{start_row + 6}'].font = arial_font
-    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 6}'].font = arial_font
-    ws_id_cards[f'{chr(65 + current_col)}{start_row + 7}'].font = arial_font
-    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 7}'].font = arial_font
-    ws_id_cards[f'{chr(65 + current_col)}{start_row + 8}'].font = arial_font
-    ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + 8}'].font = arial_font
+    for i in range(5, 9):
+        ws_id_cards[f'{chr(65 + current_col)}{start_row + i}'].font = arial_font
+        ws_id_cards[f'{chr(65 + current_col + 1)}{start_row + i}'].font = arial_font
 
-    # Add the bottom image
+    # Add the bottom image for the front of the card
     try:
         image_path_bottom = 'img/BKIDCardFrontBot.png'
         img_bottom = Image(image_path_bottom)
@@ -90,12 +81,21 @@ for index, row in enumerate(ws_data.iter_rows(min_row=2, values_only=True)):
     except FileNotFoundError:
         print(f"{image_path_bottom} could not be found.")
 
-    # Move to the next row after every two cards
-    if index % 2 == 1:
-        start_row += 12
+    # Add the back of the card as an image next to the front
+    try:
+        image_path_back = 'img/BKIDCardBackFull.png'
+        img_back = Image(image_path_back)
+        img_back.width = 310
+        img_back.height = 186
+        ws_id_cards.add_image(img_back, f'{chr(65 + current_col + 4)}{start_row}')
+    except FileNotFoundError:
+        print(f"{image_path_back} could not be found.")
 
-    # Add a page break after every 10 cards
-    if (index + 1) % 10 == 0 and index != 0:
+    # Move to the next row for the next card
+    start_row += 12
+
+    # Add a page break after every 5 cards
+    if (index + 1) % 5 == 0:
         ws_id_cards.row_breaks.append(Break(id=start_row - 2))
 
 # Finally, save the new Excel file
